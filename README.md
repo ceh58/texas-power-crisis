@@ -1,8 +1,6 @@
 # Texas Power Crisis
 By [Carmen Hoyt](https://ceh58.github.io/) [@ceh58](https://github.com/ceh58)
 
-![Census Map](https://github.com/ceh58/texas-power-crisis/blob/main/census_map.png?raw=true)
-
 ## About
 In February of 2021, Texas experienced a series of extreme winter storms that exposed vulnerabilities in the power grid. The resulting power outages disproportionately affected different socioeconomic groups in Houston, Texas. Using 4 different datasets (VIIRS, roads, houses, and socioeconomic data), this analysis investigates the impacts of these power outages on the residents of the Houston metropolitan area, particularly the distribution of outages relative to median household income.
 
