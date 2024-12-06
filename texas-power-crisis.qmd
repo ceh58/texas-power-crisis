@@ -358,7 +358,6 @@ rbind(census_impacted, census_not_impacted) %>%
 Through this analysis, I found that the disparity between census blocks that lost power and didn't lose power was greatest in the lower median income groups. As income rose, the disparity became less, as evident in my histogram.
 
 Some limitations of this study include the satellite imagery; the images had to be taken from specific days with the lowest cloud cover. There could have been some power restored in those first few days that was not accounted for as a part of the initial loss, and lingering clouds could have still impacted the difference calculated by the contrasting rasters. The data are also right-skewed, with more data concentrated in lower median income brackets. There were still some higher median income census blocks that experienced blackouts, but higher median income census blocks were less common in general. It would be interesting to look at a temporal analysis of this data to see how quickly power was restored in certain census blocks vs. others. 
-
 # References
 
 GeoFabrik. (2024). Shapefiles [Roads, Houses]. Retrieved from [https://download.geofabrik.de/](https://download.geofabrik.de/)
