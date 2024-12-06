@@ -90,11 +90,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#import-packages" id="toc-import-packages" class="nav-link" data-scroll-target="#import-packages">Import packages</a></li>
   <li><a href="#read-in-raster-data" id="toc-read-in-raster-data" class="nav-link" data-scroll-target="#read-in-raster-data">Read in raster data</a></li>
-  <li><a href="#find-locations-that-experienced-a-blackout-by-creating-a-mask" id="toc-find-locations-that-experienced-a-blackout-by-creating-a-mask" class="nav-link" data-scroll-target="#find-locations-that-experienced-a-blackout-by-creating-a-mask">Find locations that experienced a blackout by creating a mask</a></li>
+  <li><a href="#find-locations-that-experienced-power-loss-by-creating-a-mask" id="toc-find-locations-that-experienced-power-loss-by-creating-a-mask" class="nav-link" data-scroll-target="#find-locations-that-experienced-power-loss-by-creating-a-mask">Find locations that experienced power loss by creating a mask</a></li>
   <li><a href="#crop-the-blackout-mask-to-the-houston-area" id="toc-crop-the-blackout-mask-to-the-houston-area" class="nav-link" data-scroll-target="#crop-the-blackout-mask-to-the-houston-area">Crop the blackout mask to the Houston area</a></li>
   <li><a href="#exclude-highways" id="toc-exclude-highways" class="nav-link" data-scroll-target="#exclude-highways">Exclude highways</a></li>
   <li><a href="#identify-buildings-that-were-impacted" id="toc-identify-buildings-that-were-impacted" class="nav-link" data-scroll-target="#identify-buildings-that-were-impacted">Identify buildings that were impacted</a></li>
-  <li><a href="#identify-census-blocks-that-were-impacted" id="toc-identify-census-blocks-that-were-impacted" class="nav-link" data-scroll-target="#identify-census-blocks-that-were-impacted">Identify census blocks that were impacted</a></li>
+  <li><a href="#identify-census-tracts-that-were-impacted" id="toc-identify-census-tracts-that-were-impacted" class="nav-link" data-scroll-target="#identify-census-tracts-that-were-impacted">Identify census tracts that were impacted</a></li>
   </ul></li>
   <li><a href="#deliverables" id="toc-deliverables" class="nav-link" data-scroll-target="#deliverables">Deliverables:</a>
   <ul class="collapse">
@@ -102,11 +102,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#map-of-homes-in-houston-that-lost-power" id="toc-map-of-homes-in-houston-that-lost-power" class="nav-link" data-scroll-target="#map-of-homes-in-houston-that-lost-power">Map of homes in Houston that lost power</a></li>
   <li><a href="#estimated-number-of-homes-that-lost-power" id="toc-estimated-number-of-homes-that-lost-power" class="nav-link" data-scroll-target="#estimated-number-of-homes-that-lost-power">Estimated number of homes that lost power</a></li>
   <li><a href="#census-tracts-in-houston-that-lost-power" id="toc-census-tracts-in-houston-that-lost-power" class="nav-link" data-scroll-target="#census-tracts-in-houston-that-lost-power">Census tracts in Houston that lost power</a></li>
-  <li><a href="#distributions-of-median-household-income-for-census-tracts-that-did-and-did-not-experience-blackouts" id="toc-distributions-of-median-household-income-for-census-tracts-that-did-and-did-not-experience-blackouts" class="nav-link" data-scroll-target="#distributions-of-median-household-income-for-census-tracts-that-did-and-did-not-experience-blackouts">Distributions of median household income for census tracts that did and did not experience blackouts</a></li>
+  <li><a href="#distributions-of-median-household-income-for-census-tracts-that-did-and-did-not-experience-power-loss" id="toc-distributions-of-median-household-income-for-census-tracts-that-did-and-did-not-experience-power-loss" class="nav-link" data-scroll-target="#distributions-of-median-household-income-for-census-tracts-that-did-and-did-not-experience-power-loss">Distributions of median household income for census tracts that did and did not experience power loss</a></li>
   <li><a href="#reflection" id="toc-reflection" class="nav-link" data-scroll-target="#reflection">Reflection</a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   <li><a href="#acknowledgements" id="toc-acknowledgements" class="nav-link" data-scroll-target="#acknowledgements">Acknowledgements</a></li>
   </ul>
 </nav>
@@ -150,16 +149,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="data" class="level1">
 <h1>Data:</h1>
-<p>All the data used in this analysis was downloaded from a pre-prepared <a href="https://drive.google.com/file/d/1bTk62xwOzBqWmmT791SbYbHxnCdjmBtw/view?usp=drive_link">Google Drive</a>. The data in the drive was accessed from the following sources:</p>
-<p>VIIRS Data:</p>
+<p>All the data used in this analysis were downloaded from a pre-prepared <a href="https://drive.google.com/file/d/1bTk62xwOzBqWmmT791SbYbHxnCdjmBtw/view?usp=drive_link">Google Drive</a>. The data in the drive was accessed from the following sources:</p>
+<p><strong>VIIRS Data:</strong></p>
 <p>The <a href="https://ladsweb.modaps.eosdis.nasa.gov/">Visible Infrared Imaging Radiometer Suite (VIIRS)</a><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> data is remotely-sensed night lights data acquired from the Suomi satellite. It includes 4 files: two tiles (h08v05 and h08v06) per date (2021-02-07 and 2021-02-16). Those dates were chosen due to the least amount of cloud cover, allowing for the best contrast in night lights at the time of the power crisis.</p>
-<p>NASA LAADS DAAC. (2021). VIIRS [Night Light]. NASA EOSDIS Land, Atmosphere Near Real-Time Distributed Active Archive Center. Retrieved from <a href="https://viirsland.gsfc.nasa.gov/Val_overview.html">https://viirsland.gsfc.nasa.gov/Val_overview.html</a></p>
-<p>Roads and Houses Data:</p>
+<p><strong>Roads and Houses Data:</strong></p>
 <p><a href="https://download.geofabrik.de/">Geofabrik’s download site</a> is a third party distributor for <a href="https://planet.openstreetmap.org/">OpenStreetMap (OSM)</a> data. Here, we can find highways and houses data for Texas (downloaded as .gpkg files).</p>
-<p>GeoFabrik. (2024). Shapefiles [Roads, Houses]. Retrieved from <a href="https://download.geofabrik.de/">https://download.geofabrik.de/</a></p>
-<p>Socioeconomic Data:</p>
+<p><strong>Socioeconomic Data:</strong></p>
 <p>The <a href="https://www.census.gov/programs-surveys/acs">U.S. Census Bureau’s American Community Survey</a> data is census-tract level data from 2019 (downloaded as a .gbd file).</p>
-<p>U.S. Census Bureau. (2024). American Community Survey. U.S. Department of Commerce. Retrieved from <a href="https://www.census.gov/programs-surveys/acs">https://www.census.gov/programs-surveys/acs</a></p>
 <section id="data-prep" class="level2">
 <h2 class="anchored" data-anchor-id="data-prep">Data Prep:</h2>
 <section id="import-packages" class="level3">
@@ -208,8 +204,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </details>
 </div>
 </section>
-<section id="find-locations-that-experienced-a-blackout-by-creating-a-mask" class="level3">
-<h3 class="anchored" data-anchor-id="find-locations-that-experienced-a-blackout-by-creating-a-mask">Find locations that experienced a blackout by creating a mask</h3>
+<section id="find-locations-that-experienced-power-loss-by-creating-a-mask" class="level3">
+<h3 class="anchored" data-anchor-id="find-locations-that-experienced-power-loss-by-creating-a-mask">Find locations that experienced power loss by creating a mask</h3>
 <div class="cell">
 <details class="code-fold">
 <summary>Expand code</summary>
@@ -310,8 +306,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </details>
 </div>
 </section>
-<section id="identify-census-blocks-that-were-impacted" class="level3">
-<h3 class="anchored" data-anchor-id="identify-census-blocks-that-were-impacted">Identify census blocks that were impacted</h3>
+<section id="identify-census-tracts-that-were-impacted" class="level3">
+<h3 class="anchored" data-anchor-id="identify-census-tracts-that-were-impacted">Identify census tracts that were impacted</h3>
 </section>
 </section>
 <section id="deliverables" class="level2">
@@ -389,10 +385,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 </div>
-<details class="code-fold">
-<summary>Expand code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#tmap_arrange(before_map, after_map, col= 2, nrow =1)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 </section>
 <section id="map-of-homes-in-houston-that-lost-power" class="level3">
@@ -400,17 +392,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details class="code-fold">
 <summary>Expand code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Map homes that lost power</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(merged, <span class="at">bbox =</span> buildings_impacted) <span class="sc">+</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_polygons</span>() <span class="sc">+</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(buildings_impacted) <span class="sc">+</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a> <span class="fu">tm_polygons</span>(<span class="at">border.col =</span> <span class="st">"firebrick"</span>) <span class="sc">+</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_layout</span>(<span class="at">main.title =</span> <span class="st">"Homes in Houston that Lost Power"</span>,</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">bg.color =</span> <span class="st">"lightblue"</span>,</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">legend.outside =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_add_legend</span>(<span class="at">type =</span> <span class="st">"symbol"</span>, <span class="at">col =</span> <span class="st">"firebrick"</span>, <span class="at">title =</span> <span class="st">"Homes without power"</span>, <span class="at">size =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_compass</span>(<span class="at">position =</span> <span class="fu">c</span>(<span class="st">"right"</span>, <span class="st">"bottom"</span>)) <span class="sc">+</span></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_scale_bar</span>(<span class="at">position =</span> <span class="fu">c</span>(<span class="st">"right"</span>, <span class="st">"bottom"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Map homes that lost power</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(merged, <span class="at">bbox =</span> buildings_impacted) <span class="sc">+</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_polygons</span>() <span class="sc">+</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(buildings_impacted) <span class="sc">+</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a> <span class="fu">tm_polygons</span>(<span class="at">border.col =</span> <span class="st">"firebrick"</span>) <span class="sc">+</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_layout</span>(<span class="at">main.title =</span> <span class="st">"Homes in Houston that Lost Power"</span>,</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">bg.color =</span> <span class="st">"lightblue"</span>,</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">legend.outside =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_add_legend</span>(<span class="at">type =</span> <span class="st">"symbol"</span>, <span class="at">col =</span> <span class="st">"firebrick"</span>, <span class="at">title =</span> <span class="st">"Homes without power"</span>, <span class="at">size =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_compass</span>(<span class="at">position =</span> <span class="fu">c</span>(<span class="st">"right"</span>, <span class="st">"bottom"</span>)) <span class="sc">+</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_scale_bar</span>(<span class="at">position =</span> <span class="fu">c</span>(<span class="st">"right"</span>, <span class="st">"bottom"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -426,14 +418,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details class="code-fold">
 <summary>Expand code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate number of homes that lost power (by type)</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>buildings_impacted <span class="sc">%&gt;%</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(type) <span class="sc">%&gt;%</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(type) <span class="sc">%&gt;%</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">count =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_drop_geometry</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kbl</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate number of homes that lost power (by type)</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>buildings_impacted <span class="sc">%&gt;%</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(type) <span class="sc">%&gt;%</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(type) <span class="sc">%&gt;%</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">count =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_drop_geometry</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kbl</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <table class="table caption-top table-sm table-striped small" data-quarto-postprocess="true">
@@ -475,8 +467,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <details class="code-fold">
 <summary>Expand code</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estiamte total number of homes that lost power</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">"It is estimated that "</span>, <span class="fu">nrow</span>(buildings_impacted), <span class="st">" homes lost power in Houston as a result of the storm."</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estiamte total number of homes that lost power</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">"It is estimated that "</span>, <span class="fu">nrow</span>(buildings_impacted), <span class="st">" homes lost power in Houston as a result of the storm."</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "It is estimated that 157411 homes lost power in Houston as a result of the storm."</code></pre>
@@ -488,16 +480,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details class="code-fold">
 <summary>Expand code</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Map cansus blocks that lost power</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(merged, <span class="at">bbox =</span> census_impacted) <span class="sc">+</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_polygons</span>(<span class="at">col =</span> <span class="st">"lightgray"</span>) <span class="sc">+</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(census_impacted) <span class="sc">+</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_polygons</span>(<span class="at">col =</span> <span class="st">"B19013e1"</span>, <span class="at">title =</span> <span class="st">"Median Household Income (Dollars)"</span>) <span class="sc">+</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_layout</span>(<span class="at">main.title =</span> <span class="st">"Census Tracts in Houston that Lost Power"</span>,</span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">bg.color =</span> <span class="st">"lightblue"</span>,</span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">legend.outside =</span> <span class="cn">TRUE</span>)<span class="sc">+</span></span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_compass</span>(<span class="at">position =</span> <span class="fu">c</span>(<span class="st">"right"</span>, <span class="st">"bottom"</span>)) <span class="sc">+</span></span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_scale_bar</span>(<span class="at">position =</span> <span class="fu">c</span>(<span class="st">"right"</span>, <span class="st">"bottom"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Map cansus blocks that lost power</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(merged, <span class="at">bbox =</span> census_impacted) <span class="sc">+</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_polygons</span>(<span class="at">col =</span> <span class="st">"lightgray"</span>) <span class="sc">+</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(census_impacted) <span class="sc">+</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_polygons</span>(<span class="at">col =</span> <span class="st">"B19013e1"</span>, <span class="at">title =</span> <span class="st">"Median Household Income (Dollars)"</span>) <span class="sc">+</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_layout</span>(<span class="at">main.title =</span> <span class="st">"Census Tracts in Houston that Lost Power"</span>,</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">bg.color =</span> <span class="st">"lightblue"</span>,</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">legend.outside =</span> <span class="cn">TRUE</span>)<span class="sc">+</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_compass</span>(<span class="at">position =</span> <span class="fu">c</span>(<span class="st">"right"</span>, <span class="st">"bottom"</span>)) <span class="sc">+</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_scale_bar</span>(<span class="at">position =</span> <span class="fu">c</span>(<span class="st">"right"</span>, <span class="st">"bottom"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -508,34 +500,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="distributions-of-median-household-income-for-census-tracts-that-did-and-did-not-experience-blackouts" class="level3">
-<h3 class="anchored" data-anchor-id="distributions-of-median-household-income-for-census-tracts-that-did-and-did-not-experience-blackouts">Distributions of median household income for census tracts that did and did not experience blackouts</h3>
+<section id="distributions-of-median-household-income-for-census-tracts-that-did-and-did-not-experience-power-loss" class="level3">
+<h3 class="anchored" data-anchor-id="distributions-of-median-household-income-for-census-tracts-that-did-and-did-not-experience-power-loss">Distributions of median household income for census tracts that did and did not experience power loss</h3>
 <div class="cell">
 <details class="code-fold">
 <summary>Expand code</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the census blocks in the Houston clip that were not impacted</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>census_not_impacted <span class="ot">&lt;-</span> merged[<span class="sc">!</span>(merged<span class="sc">$</span>GEOID <span class="sc">%in%</span> census_impacted<span class="sc">$</span>GEOID),]</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>census_not_impacted_clip <span class="ot">&lt;-</span> census_not_impacted[mask_vec,]</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Make sure CRS match</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">nrow</span>(merged) <span class="sc">==</span> (<span class="fu">nrow</span>(census_impacted) <span class="sc">+</span> <span class="fu">nrow</span>(census_not_impacted))){</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"Good to go!"</span>)</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">warning</span>(<span class="st">"The number of rows don't add up."</span>)</span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Map census blocks that were not impacted</span></span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(merged, <span class="at">bbox =</span> census_impacted) <span class="sc">+</span></span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_polygons</span>(<span class="at">col =</span> <span class="st">"gray90"</span>) <span class="sc">+</span></span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(census_impacted) <span class="sc">+</span></span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_polygons</span>(<span class="at">col =</span><span class="st">"darkgray"</span>) <span class="sc">+</span></span>
-<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(census_not_impacted) <span class="sc">+</span></span>
-<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_polygons</span>(<span class="at">col =</span> <span class="st">"B19013e1"</span>, <span class="at">title =</span> <span class="st">"Median Household Income (Dollars)"</span>, <span class="at">palette =</span> <span class="st">"Oranges"</span>) <span class="sc">+</span></span>
-<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_layout</span>(<span class="at">main.title =</span> <span class="st">"Census Tracts in Houston that Kept Power"</span>,</span>
-<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>          <span class="at">bg.color =</span> <span class="st">"lightblue"</span>,</span>
-<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>          <span class="at">legend.outside =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
-<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_compass</span>(<span class="at">position =</span> <span class="fu">c</span>(<span class="st">"right"</span>, <span class="st">"bottom"</span>)) <span class="sc">+</span></span>
-<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_scale_bar</span>(<span class="at">position =</span> <span class="fu">c</span>(<span class="st">"right"</span>, <span class="st">"bottom"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the census blocks in the Houston clip that were not impacted</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>census_not_impacted <span class="ot">&lt;-</span> merged[<span class="sc">!</span>(merged<span class="sc">$</span>GEOID <span class="sc">%in%</span> census_impacted<span class="sc">$</span>GEOID),]</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>census_not_impacted_clip <span class="ot">&lt;-</span> census_not_impacted[mask_vec,]</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Make sure CRS match</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">nrow</span>(merged) <span class="sc">==</span> (<span class="fu">nrow</span>(census_impacted) <span class="sc">+</span> <span class="fu">nrow</span>(census_not_impacted))){</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"Good to go!"</span>)</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">warning</span>(<span class="st">"The number of rows don't add up."</span>)</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Map census blocks that were not impacted</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(merged, <span class="at">bbox =</span> census_impacted) <span class="sc">+</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_polygons</span>(<span class="at">col =</span> <span class="st">"gray90"</span>) <span class="sc">+</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(census_impacted) <span class="sc">+</span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_polygons</span>(<span class="at">col =</span><span class="st">"darkgray"</span>) <span class="sc">+</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(census_not_impacted) <span class="sc">+</span></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_polygons</span>(<span class="at">col =</span> <span class="st">"B19013e1"</span>, <span class="at">title =</span> <span class="st">"Median Household Income (Dollars)"</span>, <span class="at">palette =</span> <span class="st">"Oranges"</span>) <span class="sc">+</span></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_layout</span>(<span class="at">main.title =</span> <span class="st">"Census Tracts in Houston that Kept Power"</span>,</span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>          <span class="at">bg.color =</span> <span class="st">"lightblue"</span>,</span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>          <span class="at">legend.outside =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_compass</span>(<span class="at">position =</span> <span class="fu">c</span>(<span class="st">"right"</span>, <span class="st">"bottom"</span>)) <span class="sc">+</span></span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_scale_bar</span>(<span class="at">position =</span> <span class="fu">c</span>(<span class="st">"right"</span>, <span class="st">"bottom"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -546,21 +538,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <details class="code-fold">
 <summary>Expand code</summary>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add column to each df to describe impact</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>census_impacted <span class="ot">&lt;-</span> census_impacted <span class="sc">%&gt;%</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">impact =</span> <span class="st">"Experienced blackout"</span>)</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>census_not_impacted <span class="ot">&lt;-</span> census_not_impacted <span class="sc">%&gt;%</span></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">impact =</span> <span class="st">"No power loss"</span>)</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a histogram of values by impact</span></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="fu">rbind</span>(census_impacted, census_not_impacted) <span class="sc">%&gt;%</span></span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_drop_geometry</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> .<span class="sc">$</span>B19013e1, <span class="at">fill =</span> .<span class="sc">$</span>impact)) <span class="sc">+</span></span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Median Household Income (Dollars)"</span>, <span class="at">y =</span> <span class="st">"Count"</span>, <span class="at">title=</span><span class="st">"Distribution of Median Household Income by Impact"</span>) <span class="sc">+</span></span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_discrete</span>(<span class="at">name =</span> <span class="st">"Census Blocks:"</span>) <span class="sc">+</span></span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add column to each df to describe impact</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>census_impacted <span class="ot">&lt;-</span> census_impacted <span class="sc">%&gt;%</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">impact =</span> <span class="st">"Experienced blackout"</span>)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>census_not_impacted <span class="ot">&lt;-</span> census_not_impacted <span class="sc">%&gt;%</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">impact =</span> <span class="st">"No power loss"</span>)</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a histogram of values by impact</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="fu">rbind</span>(census_impacted, census_not_impacted) <span class="sc">%&gt;%</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_drop_geometry</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> .<span class="sc">$</span>B19013e1, <span class="at">fill =</span> .<span class="sc">$</span>impact)) <span class="sc">+</span></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Median Household Income (Dollars)"</span>, <span class="at">y =</span> <span class="st">"Count"</span>, <span class="at">title=</span><span class="st">"Distribution of Median Household Income by Impact"</span>) <span class="sc">+</span></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_discrete</span>(<span class="at">name =</span> <span class="st">"Census Blocks:"</span>) <span class="sc">+</span></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -574,15 +566,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="reflection" class="level3">
 <h3 class="anchored" data-anchor-id="reflection">Reflection</h3>
 <p>Through this analysis, I found that the disparity between census blocks that lost power and didn’t lose power was greatest in the lower median income groups. As income rose, the disparity became less, as evident in my histogram.</p>
-<p>Some limitations of this study include the satellite imagery; the images had to be taken from specific days with the lowest cloud cover. There could have been some power restored in those first few days that was not accounted for as a part of the initial loss, and lingering clouds could have still impacted the difference calculated by the contrasting rasters. The data are also right-skewed, with more data concentrated in lower median income brackets. There were still some higher median income census blocks that experienced blackouts, but higher median income census blocks were less common in general. It would be interesting to look at a temporal analysis of this data to see how quickly power was restored in certain census blocks vs.&nbsp;others.</p>
-</section>
-</section>
-</section>
-<section id="references" class="level1">
-<h1>References</h1>
+<p>Some limitations of this study include the satellite imagery; the images had to be taken from specific days with the lowest cloud cover. There could have been some power restored in those first few days that was not accounted for as a part of the initial loss, and lingering clouds could have still impacted the difference calculated by the contrasting rasters. The data are also right-skewed, with more data concentrated in lower median income brackets. There were still some higher median income census blocks that experienced blackouts, but higher median income census blocks were less common in general. It would be interesting to look at a temporal analysis of this data to see how quickly power was restored in certain census blocks vs.&nbsp;others. # References</p>
 <p>GeoFabrik. (2024). Shapefiles [Roads, Houses]. Retrieved from <a href="https://download.geofabrik.de/">https://download.geofabrik.de/</a></p>
 <p>NASA LAADS DAAC. (2021). VIIRS [Night Light]. NASA EOSDIS Land, Atmosphere Near Real-Time Distributed Active Archive Center. Retrieved from <a href="https://viirsland.gsfc.nasa.gov/Val_overview.html">https://viirsland.gsfc.nasa.gov/Val_overview.html</a></p>
 <p>U.S. Census Bureau. (2024). American Community Survey. U.S. Department of Commerce. Retrieved from <a href="https://www.census.gov/programs-surveys/acs">https://www.census.gov/programs-surveys/acs</a></p>
+</section>
+</section>
 </section>
 <section id="acknowledgements" class="level1">
 <h1>Acknowledgements</h1>

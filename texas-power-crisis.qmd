@@ -24,25 +24,21 @@ In February of 2021, Texas experienced a series of extreme winter storms[^1] tha
 
 All the data used in this analysis were downloaded from a pre-prepared [Google Drive](https://drive.google.com/file/d/1bTk62xwOzBqWmmT791SbYbHxnCdjmBtw/view?usp=drive_link). The data in the drive was accessed from the following sources:
 
-VIIRS Data:
+**VIIRS Data:**
 
 The [Visible Infrared Imaging Radiometer Suite (VIIRS)](https://ladsweb.modaps.eosdis.nasa.gov/)[^3] data is remotely-sensed night lights data acquired from the Suomi satellite. It includes 4 files: two tiles (h08v05 and h08v06) per date (2021-02-07 and 2021-02-16). Those dates were chosen due to the least amount of cloud cover, allowing for the best contrast in night lights at the time of the power crisis.
 
-NASA LAADS DAAC. (2021). VIIRS [Night Light]. NASA EOSDIS Land, Atmosphere Near Real-Time Distributed Active Archive Center. Retrieved from [https://viirsland.gsfc.nasa.gov/Val_overview.html](https://viirsland.gsfc.nasa.gov/Val_overview.html)
-
 [^3]: Read more about VIIRS [here](https://en.wikipedia.org/wiki/Visible_Infrared_Imaging_Radiometer_Suite).
 
-Roads and Houses Data:
+**Roads and Houses Data:**
 
 [Geofabrik's download site](https://download.geofabrik.de/) is a third party distributor for [OpenStreetMap (OSM)](https://planet.openstreetmap.org/) data. Here, we can find highways and houses data for Texas (downloaded as .gpkg files).
 
-GeoFabrik. (2024). Shapefiles [Roads, Houses]. Retrieved from [https://download.geofabrik.de/](https://download.geofabrik.de/)
-
-Socioeconomic Data:
+**Socioeconomic Data:**
 
 The [U.S. Census Bureau's American Community Survey](https://www.census.gov/programs-surveys/acs) data is census-tract level data from 2019 (downloaded as a .gbd file). 
 
-U.S. Census Bureau. (2024). American Community Survey. U.S. Department of Commerce. Retrieved from [https://www.census.gov/programs-surveys/acs](https://www.census.gov/programs-surveys/acs)
+# Analysis
 
 ## Data Prep:
 ### Import packages
