@@ -28,15 +28,15 @@ The `stars` and `terra` packages were useful for working with raster data, and t
 
 All the data used in this analysis was downloaded from a pre-prepared [Google Drive](https://drive.google.com/file/d/1bTk62xwOzBqWmmT791SbYbHxnCdjmBtw/view?usp=drive_link). It was downloaded, unzipped, and housed in a data/ folder that was not pushed to the repository due to its size. The data in the drive was originally obtained from the following sources:
 
-VIIRS Data:
+**VIIRS Data:**
 
 The [Visible Infrared Imaging Radiometer Suite (VIIRS)](https://ladsweb.modaps.eosdis.nasa.gov/) data is remotely-sensed night lights data acquired from the Suomi satellite. It includes 4 files: two tiles (h08v05 and h08v06) per date (2021-02-07 and 2021-02-16). Those dates were chosen due to the least cloud cover, allowing for the best contrast in night lights during the power crisis.
 
-Roads and Houses Data:
+**Roads and Houses Data:**
 
 [Geofabrik's download site](https://download.geofabrik.de/) is a third-party distributor for [OpenStreetMap (OSM)](https://planet.openstreetmap.org/) data. Here, we can find roads and houses data for Texas (downloaded as .gpkg files).
 
-Socioeconomic Data:
+**Socioeconomic Data:**
 
 The [U.S. Census Bureau's American Community Survey](https://www.census.gov/programs-surveys/acs) data is census-tract level data from 2019 (downloaded as a .gbd file). 
 
