@@ -85,7 +85,7 @@ diff_6 <- before_storm_6 - after_storm_6
 diff <- merge(diff_5, diff_6)
 ```
 
-### Find locations that experienced a blackout by creating a mask
+### Find locations that experienced power loss by creating a mask
 ```{r}
 #| code-summary: Expand code
 # Reclassify the raster
@@ -176,7 +176,7 @@ if (st_crs(exclude_hwy) == st_crs(buildings)) {
 buildings_impacted <- buildings[exclude_hwy,]
 ```
 
-### Identify census blocks that were impacted
+### Identify census tracts that were impacted
 ```{r}
 #| code-summary: Expand code
 #| echo: false
@@ -260,8 +260,6 @@ after_map <- tm_shape(after, bbox = census_impacted) +
                    position = c("left", "bottom"))
   
 after_map
-
-#tmap_arrange(before_map, after_map, col= 2, nrow =1)
 ```
 
 ### Map of homes in Houston that lost power
@@ -300,7 +298,7 @@ print(paste0("It is estimated that ", nrow(buildings_impacted), " homes lost pow
 ```{r}
 #| code-summary: Expand code
 # Map cansus blocks that lost power
-tm_shape(merged, bbox = census_impacted) +
+census <- tm_shape(merged, bbox = census_impacted) +
   tm_polygons(col = "lightgray") +
 tm_shape(census_impacted) +
   tm_polygons(col = "B19013e1", title = "Median Household Income (Dollars)") +
@@ -309,9 +307,11 @@ tm_layout(main.title = "Census Tracts in Houston that Lost Power",
           legend.outside = TRUE)+
 tm_compass(position = c("right", "bottom")) +
 tm_scale_bar(position = c("right", "bottom"))
+census
+tmap_save(census, "census_map.png", height = 3) # height interpreted in inches
 ```
 
-### Distributions of median household income for census tracts that did and did not experience blackouts
+### Distributions of median household income for census tracts that did and did not experience power loss
 ```{r}
 #| code-summary: Expand code
 #| results: "hide"
