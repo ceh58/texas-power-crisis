@@ -1,28 +1,22 @@
 # Texas Power Crisis
 By [Carmen Hoyt](https://ceh58.github.io/) [@ceh58](https://github.com/ceh58)
 
-This repository investigates power outages in Houston, TX resulting from the winter storm in February 2021.
-
 **INSERT IMAGE?**
 
 ## About
-In February of 2021, Texas experienced a series of extreme winter storms[^1] that exposed vulnerabilities in the power grid[^2]. The resulting power outages disproportionately affected different socioeconomic groups in Houston, Texas. Using 4 different datasets (VIIRS, roads, houses, and socioeconomic data), this analysis investigates the impacts of these power outages on the residents of the Houston metropolitan area.
-
-[^1]: Read more about the 2021 winter storm [here](https://en.wikipedia.org/wiki/February_13%E2%80%9317,_2021_North_American_winter_storm).
-
-[^2]: Read more about the Texas power crisis [here](https://en.wikipedia.org/wiki/2021_Texas_power_crisis).
+In February of 2021, Texas experienced a series of extreme winter storms that exposed vulnerabilities in the power grid. The resulting power outages disproportionately affected different socioeconomic groups in Houston, Texas. Using 4 different datasets (VIIRS, roads, houses, and socioeconomic data), this analysis investigates the impacts of these power outages on the residents of the Houston metropolitan area, particularly the distribution of outages relative to median household income.
 
 ## Skills
-This analysis harnesses a few valuable skills:
+This analysis harnesses the following valuable skills:
 
-- Reclassifing rasters
+- Reclassifying rasters
 - Masking rasters
 - Vectorizing rasters
-- Transforming spatial data
-- Buffering
-- Mapping with tmap
+- Transforming Coordinate Reference Systems
+- Buffering features
+- Mapping with `tmap`
 
-I used the stars and terra packages for working with raster data and the sf package for working with vector data. 
+The `stars` and `terra` packages were useful for working with raster data, and the `sf` package was used for working with vector data. 
 
 ## Repository Structure
 ```
@@ -30,7 +24,7 @@ I used the stars and terra packages for working with raster data and the sf pack
 ├── README.md
 ├── texas_power_crisis.Rproj
 ├── texas_power_crisis.html # Rendered document
-└── texas_power_crisis.qmd # Details the analysis
+└── texas_power_crisis.qmd # Quarto document detailing the analysis
 ```
 ## Data Access
 
@@ -38,9 +32,7 @@ All the data used in this analysis was downloaded from a pre-prepared [Google Dr
 
 VIIRS Data:
 
-The [Visible Infrared Imaging Radiometer Suite (VIIRS)](https://ladsweb.modaps.eosdis.nasa.gov/)[^3] data is remotely-sensed night lights data acquired from the Suomi satellite. It includes 4 files: two tiles (h08v05 and h08v06) per date (2021-02-07 and 2021-02-16). Those dates were chosen due to the least cloud cover, allowing for the best contrast in night lights during the power crisis.
-
-[^3]: Read more about VIIRS [here](https://en.wikipedia.org/wiki/Visible_Infrared_Imaging_Radiometer_Suite).
+The [Visible Infrared Imaging Radiometer Suite (VIIRS)](https://ladsweb.modaps.eosdis.nasa.gov/) data is remotely-sensed night lights data acquired from the Suomi satellite. It includes 4 files: two tiles (h08v05 and h08v06) per date (2021-02-07 and 2021-02-16). Those dates were chosen due to the least cloud cover, allowing for the best contrast in night lights during the power crisis.
 
 Roads and Houses Data:
 
@@ -52,9 +44,11 @@ The [U.S. Census Bureau's American Community Survey](https://www.census.gov/prog
 
 ## References
 
+GeoFabrik. (2024). Shapefiles [Roads, Houses]. Retrieved from [https://download.geofabrik.de/](https://download.geofabrik.de/)
 
+NASA LAADS DAAC. (2021). VIIRS [Night Light]. NASA EOSDIS Land, Atmosphere Near Real-Time Distributed Active Archive Center. Retrieved from [https://viirsland.gsfc.nasa.gov/Val_overview.html](https://viirsland.gsfc.nasa.gov/Val_overview.html)
+
+U.S. Census Bureau. (2024). American Community Survey. U.S. Department of Commerce. Retrieved from [https://www.census.gov/programs-surveys/acs](https://www.census.gov/programs-surveys/acs)
 
 ## Acknowledgements
-This analysis was adopted from [EDS223: Geospatial Analysis & Remote Sensing](https://eds-223-geospatial.github.io/). Thank you to [Ruth Oliver]() for preparing the VIIRS data.
-
-
+This analysis was adopted from [EDS223: Geospatial Analysis & Remote Sensing Homework #3](https://eds-223-geospatial.github.io/). Thank you to Ruth Oliver [@ryoliver](https://github.com/ryoliver) for preparing the data hosted on Google Drive.
