@@ -298,7 +298,7 @@ print(paste0("It is estimated that ", nrow(buildings_impacted), " homes lost pow
 ```{r}
 #| code-summary: Expand code
 # Map cansus blocks that lost power
-census <- tm_shape(merged, bbox = census_impacted) +
+tm_shape(merged, bbox = census_impacted) +
   tm_polygons(col = "lightgray") +
 tm_shape(census_impacted) +
   tm_polygons(col = "B19013e1", title = "Median Household Income (Dollars)") +
@@ -307,8 +307,6 @@ tm_layout(main.title = "Census Tracts in Houston that Lost Power",
           legend.outside = TRUE)+
 tm_compass(position = c("right", "bottom")) +
 tm_scale_bar(position = c("right", "bottom"))
-census
-tmap_save(census, "census_map.png", height = 3) # height interpreted in inches
 ```
 
 ### Distributions of median household income for census tracts that did and did not experience power loss
