@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Carmen Hoyt">
-<meta name="dcterms.date" content="2024-12-04">
+<meta name="dcterms.date" content="2024-12-05">
 
 <title>Texas Power Crisis</title>
 <style>
@@ -83,7 +83,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#data-prep" id="toc-data-prep" class="nav-link active" data-scroll-target="#data-prep">Data Prep:</a>
+  <li><a href="#data" id="toc-data" class="nav-link active" data-scroll-target="#data">Data:</a>
+  <ul class="collapse">
+  <li><a href="#data-prep" id="toc-data-prep" class="nav-link" data-scroll-target="#data-prep">Data Prep:</a>
   <ul class="collapse">
   <li><a href="#import-packages" id="toc-import-packages" class="nav-link" data-scroll-target="#import-packages">Import packages</a></li>
   <li><a href="#read-in-raster-data" id="toc-read-in-raster-data" class="nav-link" data-scroll-target="#read-in-raster-data">Read in raster data</a></li>
@@ -102,6 +104,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#distributions-of-median-household-income-for-census-tracts-that-did-and-did-not-experience-blackouts" id="toc-distributions-of-median-household-income-for-census-tracts-that-did-and-did-not-experience-blackouts" class="nav-link" data-scroll-target="#distributions-of-median-household-income-for-census-tracts-that-did-and-did-not-experience-blackouts">Distributions of median household income for census tracts that did and did not experience blackouts</a></li>
   <li><a href="#reflection" id="toc-reflection" class="nav-link" data-scroll-target="#reflection">Reflection</a></li>
   <li><a href="#data-sources" id="toc-data-sources" class="nav-link" data-scroll-target="#data-sources">Data Sources</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -127,7 +130,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">December 4, 2024</p>
+      <p class="date">December 5, 2024</p>
     </div>
   </div>
   
@@ -139,6 +142,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<p>In February of 2021, Texas experienced a series of extreme winter storms<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> that exposed vulnerabilities in the power grid<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. The resulting power outages disproportionately affected different socioeconomic groups in Houston, Texas. Using 4 different datasets (VIIRS, roads, houses, and socioeconomic data), this analysis investigates the impacts of these power outages on the residents of the Houston metropolitan area.</p>
+<section id="data" class="level1">
+<h1>Data:</h1>
+<p>All the data used in this analysis was downloaded from a pre-prepared <a href="https://drive.google.com/file/d/1bTk62xwOzBqWmmT791SbYbHxnCdjmBtw/view?usp=drive_link">Google Drive</a>. The data in the drive was accessed from the following sources:</p>
+<p>VIIRS Data:</p>
+<p>The <a href="https://ladsweb.modaps.eosdis.nasa.gov/">Visible Infrared Imaging Radiometer Suite (VIIRS)</a><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> data is remotely-sensed night lights data acquired from the Suomi satellite. It includes 4 files: two tiles (h08v05 and h08v06) per date (2021-02-07 and 2021-02-16). Those dates were chosen due to the least amount of cloud cover, allowing for the best contrast in night lights at the time of the power crisis.</p>
+<p>Roads and Houses Data:</p>
+<p><a href="https://download.geofabrik.de/">Geofabrik’s download site</a> is a third party distributor for <a href="https://planet.openstreetmap.org/">OpenStreetMap (OSM)</a> data. Here, we can find highways and houses data for Texas (downloaded as .gpkg files).</p>
+<p>Socioeconomic Data:</p>
+<p>The <a href="https://www.census.gov/programs-surveys/acs">U.S. Census Bureau’s American Community Survey</a> data is census-tract level data from 2019 (downloaded as a .gbd file).</p>
 <section id="data-prep" class="level2">
 <h2 class="anchored" data-anchor-id="data-prep">Data Prep:</h2>
 <section id="import-packages" class="level3">
@@ -559,8 +572,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="data-sources">Data Sources</h3>
 </section>
 </section>
+</section>
 
-</main>
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>Read more about the 2021 winter storm <a href="https://en.wikipedia.org/wiki/February_13%E2%80%9317,_2021_North_American_winter_storm">here</a>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Read more about the Texas power crisis <a href="https://en.wikipedia.org/wiki/2021_Texas_power_crisis">here</a>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Read more about VIIRS <a href="https://en.wikipedia.org/wiki/Visible_Infrared_Imaging_Radiometer_Suite">here</a>.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main>
 <!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
