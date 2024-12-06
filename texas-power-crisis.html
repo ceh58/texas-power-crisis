@@ -83,7 +83,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#data" id="toc-data" class="nav-link active" data-scroll-target="#data">Data:</a>
+  <li><a href="#about" id="toc-about" class="nav-link active" data-scroll-target="#about">About:</a></li>
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data:</a>
   <ul class="collapse">
   <li><a href="#data-prep" id="toc-data-prep" class="nav-link" data-scroll-target="#data-prep">Data Prep:</a>
   <ul class="collapse">
@@ -103,9 +104,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#census-tracts-in-houston-that-lost-power" id="toc-census-tracts-in-houston-that-lost-power" class="nav-link" data-scroll-target="#census-tracts-in-houston-that-lost-power">Census tracts in Houston that lost power</a></li>
   <li><a href="#distributions-of-median-household-income-for-census-tracts-that-did-and-did-not-experience-blackouts" id="toc-distributions-of-median-household-income-for-census-tracts-that-did-and-did-not-experience-blackouts" class="nav-link" data-scroll-target="#distributions-of-median-household-income-for-census-tracts-that-did-and-did-not-experience-blackouts">Distributions of median household income for census tracts that did and did not experience blackouts</a></li>
   <li><a href="#reflection" id="toc-reflection" class="nav-link" data-scroll-target="#reflection">Reflection</a></li>
-  <li><a href="#data-sources" id="toc-data-sources" class="nav-link" data-scroll-target="#data-sources">Data Sources</a></li>
   </ul></li>
   </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  <li><a href="#acknowledgements" id="toc-acknowledgements" class="nav-link" data-scroll-target="#acknowledgements">Acknowledgements</a></li>
   </ul>
 </nav>
 </div>
@@ -142,16 +144,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>In February of 2021, Texas experienced a series of extreme winter storms<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> that exposed vulnerabilities in the power grid<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. The resulting power outages disproportionately affected different socioeconomic groups in Houston, Texas. Using 4 different datasets (VIIRS, roads, houses, and socioeconomic data), this analysis investigates the impacts of these power outages on the residents of the Houston metropolitan area.</p>
+<section id="about" class="level1">
+<h1>About:</h1>
+<p>In February of 2021, Texas experienced a series of extreme winter storms<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> that exposed vulnerabilities in the power grid<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. The resulting power outages disproportionately affected different socioeconomic groups in Houston, Texas. Using 4 different datasets (VIIRS, roads, houses, and socioeconomic data), this analysis investigates the impacts of these power outages on the residents of the Houston metropolitan area, particularly the distribution of outages relative to median household income.</p>
+</section>
 <section id="data" class="level1">
 <h1>Data:</h1>
 <p>All the data used in this analysis was downloaded from a pre-prepared <a href="https://drive.google.com/file/d/1bTk62xwOzBqWmmT791SbYbHxnCdjmBtw/view?usp=drive_link">Google Drive</a>. The data in the drive was accessed from the following sources:</p>
 <p>VIIRS Data:</p>
 <p>The <a href="https://ladsweb.modaps.eosdis.nasa.gov/">Visible Infrared Imaging Radiometer Suite (VIIRS)</a><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> data is remotely-sensed night lights data acquired from the Suomi satellite. It includes 4 files: two tiles (h08v05 and h08v06) per date (2021-02-07 and 2021-02-16). Those dates were chosen due to the least amount of cloud cover, allowing for the best contrast in night lights at the time of the power crisis.</p>
+<p>NASA LAADS DAAC. (2021). VIIRS [Night Light]. NASA EOSDIS Land, Atmosphere Near Real-Time Distributed Active Archive Center. Retrieved from <a href="https://viirsland.gsfc.nasa.gov/Val_overview.html">https://viirsland.gsfc.nasa.gov/Val_overview.html</a></p>
 <p>Roads and Houses Data:</p>
 <p><a href="https://download.geofabrik.de/">Geofabrik’s download site</a> is a third party distributor for <a href="https://planet.openstreetmap.org/">OpenStreetMap (OSM)</a> data. Here, we can find highways and houses data for Texas (downloaded as .gpkg files).</p>
+<p>GeoFabrik. (2024). Shapefiles [Roads, Houses]. Retrieved from <a href="https://download.geofabrik.de/">https://download.geofabrik.de/</a></p>
 <p>Socioeconomic Data:</p>
 <p>The <a href="https://www.census.gov/programs-surveys/acs">U.S. Census Bureau’s American Community Survey</a> data is census-tract level data from 2019 (downloaded as a .gbd file).</p>
+<p>U.S. Census Bureau. (2024). American Community Survey. U.S. Department of Commerce. Retrieved from <a href="https://www.census.gov/programs-surveys/acs">https://www.census.gov/programs-surveys/acs</a></p>
 <section id="data-prep" class="level2">
 <h2 class="anchored" data-anchor-id="data-prep">Data Prep:</h2>
 <section id="import-packages" class="level3">
@@ -568,10 +576,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Through this analysis, I found that the disparity between census blocks that lost power and didn’t lose power was greatest in the lower median income groups. As income rose, the disparity became less, as evident in my histogram.</p>
 <p>Some limitations of this study include the satellite imagery; the images had to be taken from specific days with the lowest cloud cover. There could have been some power restored in those first few days that was not accounted for as a part of the initial loss, and lingering clouds could have still impacted the difference calculated by the contrasting rasters. The data are also right-skewed, with more data concentrated in lower median income brackets. There were still some higher median income census blocks that experienced blackouts, but higher median income census blocks were less common in general. It would be interesting to look at a temporal analysis of this data to see how quickly power was restored in certain census blocks vs.&nbsp;others.</p>
 </section>
-<section id="data-sources" class="level3">
-<h3 class="anchored" data-anchor-id="data-sources">Data Sources</h3>
 </section>
 </section>
+<section id="references" class="level1">
+<h1>References</h1>
+<p>GeoFabrik. (2024). Shapefiles [Roads, Houses]. Retrieved from <a href="https://download.geofabrik.de/">https://download.geofabrik.de/</a></p>
+<p>NASA LAADS DAAC. (2021). VIIRS [Night Light]. NASA EOSDIS Land, Atmosphere Near Real-Time Distributed Active Archive Center. Retrieved from <a href="https://viirsland.gsfc.nasa.gov/Val_overview.html">https://viirsland.gsfc.nasa.gov/Val_overview.html</a></p>
+<p>U.S. Census Bureau. (2024). American Community Survey. U.S. Department of Commerce. Retrieved from <a href="https://www.census.gov/programs-surveys/acs">https://www.census.gov/programs-surveys/acs</a></p>
+</section>
+<section id="acknowledgements" class="level1">
+<h1>Acknowledgements</h1>
+<p>This analysis was adopted from <a href="https://eds-223-geospatial.github.io/">EDS223: Geospatial Analysis &amp; Remote Sensing Homework #3</a>. Thank you to Ruth Oliver <a href="https://github.com/ryoliver"><span class="citation" data-cites="ryoliver">@ryoliver</span></a> for preparing the data hosted on Google Drive.</p>
 </section>
 
 
