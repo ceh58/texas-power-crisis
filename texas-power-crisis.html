@@ -84,7 +84,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#about" id="toc-about" class="nav-link active" data-scroll-target="#about">About:</a></li>
-  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data:</a>
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data:</a></li>
+  <li><a href="#analysis" id="toc-analysis" class="nav-link" data-scroll-target="#analysis">Analysis</a>
   <ul class="collapse">
   <li><a href="#data-prep" id="toc-data-prep" class="nav-link" data-scroll-target="#data-prep">Data Prep:</a>
   <ul class="collapse">
@@ -106,6 +107,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#reflection" id="toc-reflection" class="nav-link" data-scroll-target="#reflection">Reflection</a></li>
   </ul></li>
   </ul></li>
+  <li><a href="#data-sources" id="toc-data-sources" class="nav-link" data-scroll-target="#data-sources">Data Sources</a></li>
   <li><a href="#acknowledgements" id="toc-acknowledgements" class="nav-link" data-scroll-target="#acknowledgements">Acknowledgements</a></li>
   </ul>
 </nav>
@@ -156,6 +158,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><a href="https://download.geofabrik.de/">Geofabrik’s download site</a> is a third party distributor for <a href="https://planet.openstreetmap.org/">OpenStreetMap (OSM)</a> data. Here, we can find highways and houses data for Texas (downloaded as .gpkg files).</p>
 <p><strong>Socioeconomic Data:</strong></p>
 <p>The <a href="https://www.census.gov/programs-surveys/acs">U.S. Census Bureau’s American Community Survey</a> data is census-tract level data from 2019 (downloaded as a .gbd file).</p>
+</section>
+<section id="analysis" class="level1">
+<h1>Analysis</h1>
 <section id="data-prep" class="level2">
 <h2 class="anchored" data-anchor-id="data-prep">Data Prep:</h2>
 <section id="import-packages" class="level3">
@@ -566,12 +571,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="reflection" class="level3">
 <h3 class="anchored" data-anchor-id="reflection">Reflection</h3>
 <p>Through this analysis, I found that the disparity between census blocks that lost power and didn’t lose power was greatest in the lower median income groups. As income rose, the disparity became less, as evident in my histogram.</p>
-<p>Some limitations of this study include the satellite imagery; the images had to be taken from specific days with the lowest cloud cover. There could have been some power restored in those first few days that was not accounted for as a part of the initial loss, and lingering clouds could have still impacted the difference calculated by the contrasting rasters. The data are also right-skewed, with more data concentrated in lower median income brackets. There were still some higher median income census blocks that experienced blackouts, but higher median income census blocks were less common in general. It would be interesting to look at a temporal analysis of this data to see how quickly power was restored in certain census blocks vs.&nbsp;others. # References</p>
-<p>GeoFabrik. (2024). Shapefiles [Roads, Houses]. Retrieved from <a href="https://download.geofabrik.de/">https://download.geofabrik.de/</a></p>
-<p>NASA LAADS DAAC. (2021). VIIRS [Night Light]. NASA EOSDIS Land, Atmosphere Near Real-Time Distributed Active Archive Center. Retrieved from <a href="https://viirsland.gsfc.nasa.gov/Val_overview.html">https://viirsland.gsfc.nasa.gov/Val_overview.html</a></p>
-<p>U.S. Census Bureau. (2024). American Community Survey. U.S. Department of Commerce. Retrieved from <a href="https://www.census.gov/programs-surveys/acs">https://www.census.gov/programs-surveys/acs</a></p>
+<p>Some limitations of this study include the satellite imagery; the images had to be taken from specific days with the lowest cloud cover. There could have been some power restored in those first few days that was not accounted for as a part of the initial loss, and lingering clouds could have still impacted the difference calculated by the contrasting rasters. The data are also right-skewed, with more data concentrated in lower median income brackets. There were still some higher median income census blocks that experienced blackouts, but higher median income census blocks were less common in general. It would be interesting to look at a temporal analysis of this data to see how quickly power was restored in certain census blocks vs.&nbsp;others.</p>
 </section>
 </section>
+</section>
+<section id="data-sources" class="level1">
+<h1>Data Sources</h1>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Data</th>
+<th>Citation</th>
+<th>Link</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>U.S. Census Bureau</td>
+<td>U.S. Census Bureau. (2024). American Community Survey. U.S. Department of Commerce.</td>
+<td><a href="https://www.census.gov/programs-surveys/acs">https://www.census.gov/programs-surveys/acs</a></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>VIIRS Night Light Data</td>
+<td>NASA LAADS DAAC. (2021). VIIRS [Night Light]. NASA EOSDIS Land, Atmosphere Near Real-Time Distributed Active Archive Center.</td>
+<td><a href="https://viirsland.gsfc.nasa.gov/Val_overview.html">https://viirsland.gsfc.nasa.gov/Val_overview.html</a></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Roads and Houses Data</td>
+<td>GeoFabrik. (2024). Shapefiles [Roads, Houses].</td>
+<td><a href="https://download.geofabrik.de/">https://download.geofabrik.de/</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="acknowledgements" class="level1">
 <h1>Acknowledgements</h1>
